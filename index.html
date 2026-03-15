@@ -5,34 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Frost Legion Demonlist - Home</title>
   <style>
-    :root {{--bg:#070b18;--panel:#111b36;--text:#eaf0ff;--muted:#a8bddf;--accent:#5eaaff;}}
-    * {{box-sizing:border-box;}}
-    body {{margin:0;font-family:Inter,system-ui,sans-serif;background:linear-gradient(180deg,#08112b,#04080f);color:var(--text);min-height:100vh;}}
-    .topbar {{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:.5rem;padding:.45rem .9rem;background:rgba(2,10,28,.95);border-bottom:1px solid #2a3d78;}}
-    .hamburger {{cursor:pointer;border:0;background:#1c2f6f;color:white;padding:.38rem .65rem;border-radius:.4rem;font-weight:700;}}
-    .title {{font-weight:700;font-size:.9rem;}}
-    .page {{max-width:960px;margin:0 auto;padding:1rem;}}
-    .hero {{background:linear-gradient(130deg,#243c8f,#0f1f52);border-radius:.7rem;border:1px solid #2f4f9f;padding:.8rem;}}
-    .hero h1 {{margin:.2rem 0 .2rem;}}
-    .hero p {{margin:.25rem 0 0;color:#d7e5ff;}}
-    .box {{background:var(--panel);border:1px solid #223e7f;border-radius:.7rem;padding:.8rem;margin-top:1rem;}}
-    .contact {{background:#000;border:1px solid #333;color:#fff;padding:.8rem;border-radius:.5rem;margin-top:1rem;}}
-    .sidemenu {{position:fixed;left:0;top:0;bottom:0;width:250px;background:rgba(7,12,40,.98);transform:translateX(-106%);transition:transform .2s ease;z-index:40;border-right:1px solid #2f4f9f;padding:1rem;}}
-    .sidemenu.open {{transform:translateX(0);}}
-    .sidemenu h2 {{margin:.05rem 0 .65rem;color:#fff;}}
-    .sidemenu a {{display:block;text-decoration:none;color:#e6edff;padding:.38rem .5rem;border-radius:.35rem;margin:.2rem 0;background:#162957;}}
-    .sidemenu a:hover {{background:#2a4b9b;}}
-    .overlay {{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:35;}}
-    .overlay.open {{display:block;}}
+    :root {--bg:#0b1220;--panel:#101a33;--card:#12244f;--text:#eff4ff;--muted:#b3c7ed;--accent:#59cdff;--border:#2f4f9a;}
+    *{box-sizing:border-box;}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(circle at 15% 0%,#1b294f 0%,#0b1220 42%,#05080f 100%);color:var(--text);}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(6,12,30,.95);border-bottom:1px solid rgba(255,255,255,.08);padding:.55rem 1rem;display:flex;align-items:center;gap:.6rem;}
+    .menubtn{font-size:1.1rem;padding:.35rem .6rem;border-radius:.45rem;border:0;background:#194b94;color:white;cursor:pointer;}
+    .menuLabel{font-weight:700;color:#fff;}
+    .layout{display:grid;grid-template-columns:240px 1fr;gap:1rem;max-width:1200px;margin:1rem auto;padding:0 1rem;}
+    .sidebar{background:rgba(14,22,47,.95);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.9rem;position:sticky;top:1rem;align-self:start;}
+    .sidebar h2{margin:.2rem 0 .6rem;color:#fff;letter-spacing:.3px;}
+    .sidebar ul{list-style:none;margin:0;padding:0;}
+    .sidebar li{margin:.2rem 0;}
+    .sidebar a{color:#dbe6ff;text-decoration:none;padding:.25rem .35rem;display:block;border-radius:.4rem;}
+    .sidebar a:hover{background:#223f89;}
+    .sub{margin-left:.7rem;}
+    .toggle{width:100%;background:none;border:none;color:#dbe6ff;text-align:left;padding:.3rem .25rem;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:space-between;border-radius:.35rem;}
+    .toggle:hover{background:#1d3f8f;}
+    .hidden{display:none;}
+    .content{background:rgba(14,21,45,.9);border:1px solid #2a4e9d;border-radius:12px;padding:1rem;}
+    .hero{border-radius:10px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,#1b396a,#0e193e);padding:.9rem;}
+    .hero h1{margin:.1rem 0 .25rem;}
+    .hero p{margin:0;color:#dce8ff;}
+    .cardholder{margin-top:1rem;display:grid;grid-template-columns:1fr;gap:.8rem;}
+    .demon-card{background:#0e1a43;border:1px solid #314f9b;border-radius:10px;padding:.7rem;display:grid;grid-template-columns:150px 1fr;gap:.7rem;}
+    .thumb{border:1px dashed #5f7ec7;border-radius:8px;background:#0a132a;min-height:120px;display:flex;align-items:center;justify-content:center;color:#a6bce4;font-size:.8rem;}
+    .info{display:flex;flex-direction:column;gap:.25rem;}
+    .by{font-weight:700;color:#b4d4ff;letter-spacing:.2px;}
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <h3>Menu</h3>
+    .form-row{display:grid;grid-template-columns:1fr 150px;gap:.4rem;align-items:center;margin:.3rem 0;}
+    .form-row label{font-size:.9rem;color:#c9d7f2;}
+    .form-row input{width:100%;padding:.4rem .45rem;border-radius:.4rem;border:1px solid #3a5db6;background:#0d1d47;color:#fff;}
+    .add-btn{background:#27a8ff;border:0;color:white;border-radius:.5rem;padding:.45rem .7rem;cursor:pointer;margin-top:.55rem;}
+    .footer{margin-top:1rem;padding:.8rem 0;font-size:.85rem;color:#acbcdf;border-top:1px solid rgba(255,255,255,.1);}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:200;}
+    .overlay.show{display:block;}
+    .mobile-sidebar{position:fixed;left:0;top:0;bottom:0;width:240px;background:#0b1334;transform:translateX(-102%);transition:transform .2s ease;z-index:210;padding:.8rem;overflow:auto;}
+    .mobile-sidebar.show{transform:translateX(0);}
+    .mobile-sidebar h3{margin:0 0 .5rem;color:#fff;}
+    .mobile-sidebar a{color:#dcdeff;text-decoration:none;display:block;margin:.3rem 0;padding:.3rem .4rem;border-radius:.35rem;}
+    .mobile-sidebar a:hover{background:#1d3f8f;}
+
+
   </style>
 </head>
 <body>
   <div class="topbar">
-    <button class="hamburger" id="hamburger">☰</button>
-    <div class="title">Frost Legion Demonlist - Home</div>
+    <button class="menubtn" id="menuBtn">☰</button>
+    <div class="menuLabel">Menu</div>
   </div>
-  <div class="sidemenu" id="sidemenu">
-    <h2>Menu</h2>
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <h3>Menu</h3>
     <a href="/home/">Home</a>
     <a href="/MainList/">Main List</a>
     <a href="/ExtendedList/">Extended List</a>
@@ -40,7 +63,6 @@
     <a href="/ImpossibleList/">Impossible List</a>
     <a href="/Submit/">Submit</a>
     <a href="/About/">About</a>
-    <a href="/">Root</a>
   </div>
   <div class="overlay" id="overlay"></div>
   <div class="page">
