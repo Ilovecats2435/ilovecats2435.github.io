@@ -76,3 +76,75 @@ toggles.forEach(btn=>{btn.addEventListener('click',()=>{const show=document.getE
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demon List Card</title>
+<style>
+/* 1. Basic Reset and Card Container */
+.demon-list-card {
+  display: flex; /* Arranges video and details side-by-side */
+  border: 1px solid #ccc; /* Add a border to see the card outline */
+  background-color: #f9f9f9; /* Light background */
+  margin-bottom: 20px; /* Space between cards */
+  font-family: Arial, sans-serif; /* A simple font */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  overflow: hidden; /* Keeps the video within rounded corners */
+}
+
+/* 2. Styling the Video Section */
+.demon-list-card .video-container {
+  flex: 0 0 40%; /* Set a specific width (40%) and don't let it grow or shrink */
+  position: relative; /* Essential for making responsive videos */
+  padding-bottom: 22.5%; /* 16:9 aspect ratio padding for the container */
+  height: 0; /* Let padding define the height */
+}
+
+.demon-list-card .video-container iframe {
+  position: absolute; /* Position the video over the padded container */
+  top: 0;
+  left: 0;
+  width: 100%; /* Fill the container's width */
+  height: 100%; /* Fill the container's height */
+  border: none; /* Remove the standard video border */
+}
+
+/* 3. Styling the Details Section */
+.demon-list-card .details {
+  flex: 1; /* This section will grow to fill the remaining space */
+  padding: 20px; /* Space inside the text area */
+}
+
+.demon-list-card .details h3 {
+  margin-top: 0; /* Remove default margin from the title */
+  margin-bottom: 10px; /* Space below the title */
+  font-size: 24px; /* Make the title stand out */
+  color: #333; /* A dark color for the text */
+}
+
+.demon-list-card .details p {
+  margin: 5px 0; /* Small space between lines of details */
+  font-size: 16px; /* Text size for the details */
+  color: #555; /* A slightly lighter color for the details */
+}
+</style>
+</head>
+<body>
+
+<div class="demon-list-card">
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/S_I5O2p-iFw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+
+  <div class="details">
+    <h3>Sakupen Frost by ILikeGrapes</h3>
+    <p>Verified By: ILikeGrapes</p>
+    <p>ID: 129977654</p>
+    <p>List Points: 125</p>
+  </div>
+
+</div>
+
+</body>
+</html>
