@@ -80,34 +80,35 @@ toggles.forEach(btn=>{btn.addEventListener('click',()=>{const show=document.getE
     { rank: 2, name: "Ilovecats2435", points: 100 }
   ];
 
-  // 1. Create the container
   const container = document.createElement('div');
   container.style.display = 'flex';
-  container.style.flexDirection = 'column'; // Stack them vertically
-  container.style.gap = '8px';               // Small gap between bars
-  container.style.marginTop = '20px';       // Space from the description text
-  container.style.width = '100%';           // Fill the width of the hero box
+  container.style.flexDirection = 'column';
+  container.style.gap = '8px';
+  container.style.marginTop = '20px';
+  container.style.marginBottom = '20px'; // Space between list and that grey line
+  container.style.width = '100%';
 
   stats.forEach((player) => {
     const box = document.createElement('div');
     box.textContent = `${player.rank}. ${player.name}: ${player.points} points`;
-    
-    // Style to match the wide bar look
-    box.style.background = '#1d4ed8';        // The vibrant blue
+    box.style.background = '#1d4ed8';
     box.style.color = '#fff';
     box.style.borderRadius = '6px';
     box.style.padding = '12px 20px';
     box.style.fontWeight = '600';
     box.style.fontSize = '1rem';
-    box.style.textAlign = 'left';            // Keep text aligned left like a list
+    box.style.textAlign = 'left';
     box.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
-    
     container.appendChild(box);
   });
 
-  // 2. Append directly to the hero div
-  const hero = document.querySelector('.hero');
-  if (hero) {
-    hero.appendChild(container);
+  // 2. Insert it specifically ABOVE the footer line
+  const footer = document.querySelector('.footer');
+  if (footer) {
+    // This places the list exactly before the element with class "footer"
+    footer.parentNode.insertBefore(container, footer);
+  } else {
+    // Fallback if footer isn't found
+    document.querySelector('.hero').appendChild(container);
   }
 </script>
