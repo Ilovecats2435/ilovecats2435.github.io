@@ -80,33 +80,32 @@ toggles.forEach(btn=>{btn.addEventListener('click',()=>{const show=document.getE
     { rank: 2, name: "Ilovecats2435", points: 100 }
   ];
 
-  // 1. Create the container FIRST
+  // 1. Create the container
   const container = document.createElement('div');
-  container.style.margin = '20px auto'; 
   container.style.display = 'flex';
-  container.style.flexDirection = 'column';
-  container.style.alignItems = 'center';
-  container.style.gap = '5px'; // Adds a little space between the bars
+  container.style.flexDirection = 'column'; // Stack them vertically
+  container.style.gap = '8px';               // Small gap between bars
+  container.style.marginTop = '20px';       // Space from the description text
+  container.style.width = '100%';           // Fill the width of the hero box
 
-  // 2. Build the player boxes and put them IN the container
-  stats.forEach((player, i) => {
+  stats.forEach((player) => {
     const box = document.createElement('div');
     box.textContent = `${player.rank}. ${player.name}: ${player.points} points`;
-    box.style.background = '#182c5a';
+    
+    // Style to match the wide bar look
+    box.style.background = '#1d4ed8';        // The vibrant blue
     box.style.color = '#fff';
-    box.style.border = '1px solid #3a5db6';
-    box.style.borderRadius = '7px';
-    box.style.padding = '0.35rem 1.2rem';
+    box.style.borderRadius = '6px';
+    box.style.padding = '12px 20px';
     box.style.fontWeight = '600';
-    box.style.fontSize = '1.05rem';
-    box.style.width = '340px';
-    box.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+    box.style.fontSize = '1rem';
+    box.style.textAlign = 'left';            // Keep text aligned left like a list
+    box.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
     
     container.appendChild(box);
   });
 
-  // 3. FINALLY, add the finished container to your page
-  // This puts it right inside the blue hero section under the text
+  // 2. Append directly to the hero div
   const hero = document.querySelector('.hero');
   if (hero) {
     hero.appendChild(container);
