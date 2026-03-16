@@ -79,13 +79,8 @@ toggles.forEach(btn=>{btn.addEventListener('click',()=>{const show=document.getE
       { rank: 1, name: "Ilikegrapes", points: 125 },
       { rank: 2, name: "Ilovecats2435", points: 100 }
     ];
-.stats-container {
-    display: flex;
-    justify-content: space-between; /* Pushes text to left, list to right */
-    align-items: flex-start;        /* Keeps them aligned at the top */
-    padding: 20px;
-    gap: 20px;                      /* Adds breathing room between them */
-}
+
+    
 
     const container = document.createElement('div');
     container.style.position = 'fixed';
@@ -108,9 +103,18 @@ toggles.forEach(btn=>{btn.addEventListener('click',()=>{const show=document.getE
       box.style.width = '340px';
       box.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
       container.appendChild(box);
+      
     });
 
     document.body.appendChild(container);
+    
   </script>
+  .stats-container {
+    display: flex;
+    justify-content: space-between; /* Pushes text to left, list to right */
+    align-items: flex-start;        /* Keeps them aligned at the top */
+    padding: 20px;
+    gap: 20px;                      /* Adds breathing room between them */
+}
 </body>
 </html>
